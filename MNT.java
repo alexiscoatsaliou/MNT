@@ -1,54 +1,69 @@
 package ProjetJava;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 public class MNT {
-	public double pas;
-	public double nrows;
-	public double ncols;
-
+	
+	Point tab [][];
+	int ncols;
+	int nline;
+	int pas;
+	
+	public MNT(int ncols2, int nline2, int pas2){
+		ncols = ncols2;
+		nline = nline2;
+		pas = pas2;
 		
-	    String chaine="";
-		String fichier ="D:\\mnt_test.txt";
- 
-		//lecture du fichier texte	
-		try{
-			InputStream ips=new FileInputStream(fichier); 
-			InputStreamReader ipsr=new InputStreamReader(ips);
-			BufferedReader br=new BufferedReader(ipsr);
-			String ligne;
-			while ((ligne=br.readLine())!=null){
-				if (ligne.contains("cellsize "))
-				{
-					String[] st = ligne.split("cellsize", ' ');
-					pas = Double.parseDouble(st[1]);
-					System.out.println(pas);
-				}
-				if (ligne.contains("nrows "))
-				{
-					String[] st = ligne.split("nrows", ' ');
-					nrows = Double.parseDouble(st[1]);
-					System.out.println(nrows);
-				}
-				if (ligne.contains("ncols "))
-				{
-					String[] st = ligne.split("ncols", ' ');
-					ncols = Double.parseDouble(st[1]);
-					System.out.println(ncols);
-				}
-				
-
-			}
-			br.close(); 
-		}		
-		catch (Exception e){
-			System.out.println(e.toString());
-		}
-
+		tab = new Point [nline][ncols];
 	}
 
+		public MNT LireMNT(){
+			MNT mnt = null;
+			
+			String filename = "D:\\mnt_test.txt";
+			File f = new File(filename);
+			Scanner in = null;
+			String ligne;
+			int ncols = 0;
+			int nrows = 0;
+			int pas = 0;
+			
+			try {
+			in = new Scanner(f);
+			while (in.hasNextLine()) {
+			String line = in.nextLine();
+				if (line.contains("ncols "))
+				{
+					String[] st = line.split("ncols ", ' ');
+					ncols = Integer.parseInt(st[1]);
+				}
+				if (line.contains("nrows "))
+				{
+					String[] st = line.split("nrows", ' ');
+					nrows = Integer.parseInt(st[1]);
+				}
+				if (line.contains("cellsize "))
+				{
+					String[] st = line.split("cellsize ", ' ');
+					pas = Integer.parseInt(st[1]);
+				}
+				mnt = new MNT(ncols, nrows, pas);
+			}
+			
+			
+			} catch (FileNotFoundException e) {
+			e.printStackTrace();
+			} finally {
+			if (in != null)
+			in.close();
+			}
+			
+			return mnt;
+
+		}
 
 }
+
+
