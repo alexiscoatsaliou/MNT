@@ -6,10 +6,11 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 public class MNT {
-	
-	
-	public static void main(String[] args){
-	
+	public double pas;
+	public double nrows;
+	public double ncols;
+
+		
 	    String chaine="";
 		String fichier ="D:\\mnt_test.txt";
  
@@ -23,21 +24,22 @@ public class MNT {
 				if (ligne.contains("cellsize "))
 				{
 					String[] st = ligne.split("cellsize", ' ');
-					double pas = Double.parseDouble(st[1]);
+					pas = Double.parseDouble(st[1]);
 					System.out.println(pas);
 				}
 				if (ligne.contains("nrows "))
 				{
 					String[] st = ligne.split("nrows", ' ');
-					double nrows = Double.parseDouble(st[1]);
+					nrows = Double.parseDouble(st[1]);
 					System.out.println(nrows);
 				}
 				if (ligne.contains("ncols "))
 				{
 					String[] st = ligne.split("ncols", ' ');
-					double ncols = Double.parseDouble(st[1]);
+					ncols = Double.parseDouble(st[1]);
 					System.out.println(ncols);
 				}
+				
 
 			}
 			br.close(); 
