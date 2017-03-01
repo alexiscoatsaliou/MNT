@@ -7,4 +7,12 @@ public class Point {
 	double Z;
 	int i;
 	int j;
+	
+	public Point(double a, double b, double c, int d, int e){
+		X = a;
+		Y = b;
+		Z = c;
+		i = d;
+		j = e;
+	}
 }
