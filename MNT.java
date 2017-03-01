@@ -29,6 +29,9 @@ public class MNT {
 			int ncols = 0;
 			int nrows = 0;
 			int pas = 0;
+			int compteur = 1;
+			double coordX = 0;
+			double coordY = 0;		
 			
 			try {
 			in = new Scanner(f);
@@ -49,7 +52,35 @@ public class MNT {
 					String[] st = line.split("cellsize ", ' ');
 					pas = Integer.parseInt(st[1]);
 				}
+				if (line.contains("xllcorner "))
+				{
+					String[] st = line.split("xllcorner ", ' ');
+					coordX = Double.parseDouble(st[1]);
+				}
+				if (line.contains("yllcorner "))
+				{
+					String[] st = line.split("yllcorner", ' ');
+					coordY = Double.parseDouble(st[1]);
+				}
 				mnt = new MNT(ncols, nrows, pas);
+				compteur++;
+				
+				if (compteur >= 7){
+					
+					for (int i = 0; i < ncols; i++) {
+						String[] st = line.split(" ");
+						int j = 1;
+						while ( j != ncols) {
+							double z = Double.parseDouble(st[j]);
+							
+							tab[i][j] = new Point(coordX + ((double)pas * (double)i), coordY + ((double)pas * (double)j), z, i, j);
+							
+							System.out.println(tab);
+							
+						}
+						st = null;
+					}
+				} 
 			}
 			
 			
