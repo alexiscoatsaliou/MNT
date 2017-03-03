@@ -14,8 +14,11 @@ import javax.swing.JPanel;
 
 
 public class Fenetre extends JFrame {
-
-	  public Fenetre(){
+	
+	String chemin;
+	
+	  public Fenetre(String c){
+		this.chemin = c;
 	    this.setTitle("Modélisation de MNT");
 	    this.setSize(500, 500);
 	    this.setLocationRelativeTo(null);
@@ -23,6 +26,8 @@ public class Fenetre extends JFrame {
 	    this.setVisible(true);
 	    JPanel panel = new JPanel();
 	    JButton bouton = new JButton("Chargez vôtre MNT");
+	    JLabel label = new JLabel(c);
+	    panel.add(label);
 	    panel.add(bouton);
 	    panel.add(bouton, BorderLayout.NORTH);
 	    
@@ -33,5 +38,6 @@ public class Fenetre extends JFrame {
 	  
 	  public static void main(String[] args){       
 	    Fenetre fen = new Fenetre();
-	  } 
+	  }
+	
 }

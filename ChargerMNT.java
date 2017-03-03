@@ -22,11 +22,11 @@ public class ChargerMNT implements ActionListener {
 		    {
 		    	 File folder = chooser.getSelectedFile();
 		         chemin = folder.getPath();
-		         System.out.println(chemin);
-		    }
-		    
-		   
+		    } 
 	}
+	
+	Fenetre d = new Fenetre(chemin);
+
 	
 }
 
