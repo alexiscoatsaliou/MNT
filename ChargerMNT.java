@@ -11,19 +11,22 @@ import javax.swing.JTextField;
 public class ChargerMNT implements ActionListener {
 
 	private JTextField _textField;
+	String chemin;
 	
-	public void actionPerformed(ActionEvent e) {
+	public void actionPerformed(ActionEvent e) { 
 	
 		 JFileChooser chooser = new JFileChooser();
 		    chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);   
 		    int returnVal = chooser.showOpenDialog(null);
 		    if(returnVal == JFileChooser.APPROVE_OPTION) 
 		    {
-		         File folder = chooser.getSelectedFile();
-		         this._textField.setText(folder.getAbsolutePath());
+		    	 File folder = chooser.getSelectedFile();
+		         chemin = folder.getPath();
+		         System.out.println(chemin);
 		    }
+		    
+		   
 	}
-	
 	
 }
 
