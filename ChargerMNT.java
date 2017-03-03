@@ -1,15 +1,30 @@
 package ProjetJava;
 
-import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
-import javax.swing.JComponent;
+import javax.swing.JFileChooser;
+import javax.swing.JTextField;
+
 
 public class ChargerMNT implements ActionListener {
 
+	private JTextField _textField;
+	
 	public void actionPerformed(ActionEvent e) {
-		System.out.println("il a cliqué ! " + e.getSource());
+	
+		 JFileChooser chooser = new JFileChooser();
+		    chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);   
+		    int returnVal = chooser.showOpenDialog(null);
+		    if(returnVal == JFileChooser.APPROVE_OPTION) 
+		    {
+		         File folder = chooser.getSelectedFile();
+		         this._textField.setText(folder.getAbsolutePath());
+		    }
 	}
+	
+	
 }
+
 
