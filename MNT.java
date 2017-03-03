@@ -12,19 +12,18 @@ public class MNT {
 	int ncols;
 	int nline;
 	int pas;
+	String textpath;
 	
-	public MNT(int ncols2, int nline2, int pas2){
-		ncols = ncols2;
-		nline = nline2;
-		pas = pas2;
+	public MNT(String textPath){
+		this.textpath = textPath;
 		
-		tab = new Point [nline][ncols];
+		
 	}
 
 		public MNT LireMNT() throws Exception{
 			MNT mnt = null;
 			
-			String filename = "D:\\Dpt_75_asc.asc";
+			String filename = this.textpath;
 			File f = new File(filename);
 			Scanner in = null;
 			int ncols = 0;
@@ -64,22 +63,24 @@ public class MNT {
 					String[] st = line.split("yllcorner", ' ');
 					coordY = Double.parseDouble(st[1]);
 				}
-				mnt = new MNT(ncols, nrows, pas);
+				
 				compteur++;
+				tab = new Point [nrows][ncols];
 				
 				if (compteur >= 8){
 					
-					for (int i = 0; i < ncols; i++) {
+					for (int i = 0; i < nrows; i++) {
 						String[] st = line.split(" ");
 						int j = 0;
-						while ( j != nrows) {
+						while ( j < ncols) {
 							double z = Double.parseDouble(st[j]);
 							
-							tab[i][j] = new Point(coordX + ((double)pas * (double)i), coordY + ((double)pas * (double)j), z, i, j);
+							tab[i][j] = new Point(coordX + (((double)pas * 0.001) * (double)j+1), coordY + (((double)pas * 0.001) * (double)i +1), z, i, j);
 							
 							System.out.print (tab[i][j]);
 							
 							j++;
+							
 						}
 						st = null;
 					}
