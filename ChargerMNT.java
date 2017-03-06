@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 
 public class ChargerMNT extends JButton implements ActionListener {
 
-	String chemin;
+	static String chemin;
 	private JLabel label;
 	
 	public ChargerMNT(String msg, JLabel label) {
@@ -35,5 +35,3 @@ public class ChargerMNT extends JButton implements ActionListener {
 	}
 
 }
-
-
