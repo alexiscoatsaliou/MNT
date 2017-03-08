@@ -1,64 +1,45 @@
 package ProjetJava;
 
+import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class PlacerPoints extends JFrame {
+public class PlacerPointsBis extends JFrame {
 	double ncols;
 	double nline;
+	Point[][] tab;
+	MNT m = new MNT(ChargerMNT.chemin);
 	
-
-	
-public Grille(){
-	
+public PlacerPoints() {
 	 this.setTitle("GridBagLayout");
-	    this.setSize(300, 160);
-	    MNT m = new MNT(ChargerMNT.chemin);
-	    Point[][] tab = m.LireMNT();
-
-	    //On crée nos différents conteneurs de couleur différente
-	    
+	 this.setSize(300, 160);	    
+	 //On crée nos différents conteneurs de couleur différente
+	 tab = m.LireMNT();
+	 GridLayout gl = new GridLayout(m.ncols,m.nline);
 	    for(int i=0; i < m.ncols; i++) {
-	    	for(int j=0; j < m.nline; j++) {
-	    int n = tab[i][j].GetNum();
-	    String nom = "Cellelu" + n;
-	    JPanel nom  = new JPanel();
-	   	nom.setPreferredSize(new Dimension(60, 40));
+	    	for(int j=0; i < m.nline; j++) {
+	    		
+	    		JPanel panel  = new JPanel();
+	    		panel.setPreferredSize(new Dimension(60, 40));
+	    		double n = tab[i][j].getZ();
+	    		if (n < 30) {
+	    			panel.setBackground(Color.green);
+	    		} else if (n >30 && n < 40){
+	    			panel.setBackground(Color.yellow);
+	    		} else if (n > 40 && n < 50){
+	    			panel.setBackground(Color.orange);
+	    		} else if (n > 50 && n < 60){
+	    			panel.setBackground(Color.red);
+	    		} else if (n > 60){
+	    			panel.setBackground(Color.darkGray);
+	    		}
+	    		
 	    }
-	    	}
-	  //Le conteneur principal
-	    JPanel content = new JPanel();
-	    content.setPreferredSize(new Dimension(300, 120));
-	    
-	    //L'objet servant à positionner les composants
-	    GridBagConstraints gbc = new GridBagConstraints();
-	    
-	    //On définit le layout manager
-	    content.setLayout(new GridBagLayout());
-	    
-	    //On positionne la case de départ du composant
-	    gbc.gridx = 0;
-	    gbc.gridy = 0;
-
-	    //La taille en hauteur et en largeur
-	    gbc.gridheight = 1;
-	    gbc.gridwidth = 1;
-	    content.add(cell1, gbc);
-
-	   
-
-	    gbc.gridx = 1;
-	    content.add(cell2, gbc);
-	  
-
-	    gbc.gridx = 2;      
-
-	    content.add(cell3, gbc);
+	
+	 }	    
 }
 		
-		
-	}	
+}
