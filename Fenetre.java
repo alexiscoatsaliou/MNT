@@ -17,14 +17,13 @@ public class Fenetre extends JFrame {
 	    JPanel panel = new JPanel(); 
 	    JLabel label = new JLabel("Fichier MNT selecionné : ...");
 	    JButton bouton = new ChargerMNT("Chargez vôtre MNT", label);
-	    panel.add(label);
 	    panel.add(bouton);
-	    this.add(panel, BorderLayout.NORTH);
+	    this.setSize(450, 100);
+	    this.add(panel);
+	    panel.add(label);
 	    this.setTitle("Modélisation de MNT");
-	    this.setExtendedState(Frame.MAXIMIZED_BOTH);
 	    this.setLocationRelativeTo(null);
 	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
-	    this.pack();
 	    this.setVisible(true);
 	  }
 	 	
