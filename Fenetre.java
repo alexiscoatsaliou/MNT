@@ -13,15 +13,15 @@ public class Fenetre extends JFrame {
 	
 	String chemin;
 	
-	  public Fenetre(){							//Création de la fenêtre principale
+	  public Fenetre(){							//CrÃ©ation de la fenÃªtre principale
 	    JPanel panel = new JPanel(); 
-	    JLabel label = new JLabel("Fichier MNT selecionné : ...");
-	    JButton bouton = new ChargerMNT("Chargez vôtre MNT", label);
+	    JLabel label = new JLabel("Fichier MNT selectionnÃ© : ...");
+	    JButton bouton = new ChargerMNT("Chargez votre MNT", label);
 	    panel.add(bouton);
 	    this.setSize(450, 100);
 	    this.add(panel);
 	    panel.add(label);
-	    this.setTitle("Modélisation de MNT");
+	    this.setTitle("ModÃ©lisation de MNT");
 	    this.setLocationRelativeTo(null);
 	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
 	    this.setVisible(true);
