@@ -30,7 +30,7 @@ public class MNT extends PlacerPoints {
 		ncols = 0;
 		nline = 0;
 		pas = 0;
-		int compteur = 1;
+		int compteur = -1;
 		double coordX = 0;
 		double coordY = 0;
 		DecimalFormat format = new DecimalFormat("#.00");
@@ -38,6 +38,7 @@ public class MNT extends PlacerPoints {
 		try {
 			in = new Scanner(f);
 			while (in.hasNextLine()) {
+				compteur++;
 				String line = in.nextLine();
 				if (line.contains("ncols "))
 				{
@@ -65,27 +66,25 @@ public class MNT extends PlacerPoints {
 					coordY = Double.parseDouble(st[1]);
 				}
 
-				compteur++;
-				tab = new Point [nline][ncols];
+				
 
 
 				//création d'un tableau contenant les coordonnées des points, leur altitudes et leur position dans le tableau
 
-				if (compteur >= 8){
-
-					for (int i = 0; i < nline; i++) {
+				if (compteur >= 6){
+					
+					if(tab == null){
+						tab = new Point [nline][ncols];
+					}
 						String[] st = line.split(" ");
-						int j = 0;
-						while ( j < ncols) {
+						for ( int j = 0; j < ncols; j++) {
 							double z = Double.parseDouble(st[j]);
 
-							tab[i][j] = new Point(coordX + (((double)pas * 0.001) * (double)j+1), coordY + (((double)pas * 0.001) * (double)i +1), z, i, j);
-
-							j++;
+							tab[compteur-6][j] = new Point(coordX + (((double)pas * 0.001) * (double)j), coordY + (((double)pas * 0.001) * (double)(compteur-6)), z, compteur-6, j);
 
 						}
 						st = null;
-					}
+					
 				}
 			}
 
@@ -93,16 +92,11 @@ public class MNT extends PlacerPoints {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			if (in != null)
 				in.close();
-		}
-
+			}
 		return tab;
-
 	}
-}
-
-
+}	

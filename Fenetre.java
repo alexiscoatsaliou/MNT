@@ -18,14 +18,14 @@ public class Fenetre extends JFrame {
 	
 	String chemin;
 	
-	  public Fenetre(){							//CrÃ©ation de la fenÃªtre principale
+	  public Fenetre(){							//Création de la fenêtre principale
 	    JPanel panel = new JPanel(); 
-	    JLabel label = new JLabel("Fichier MNT selecionnÃ© : ...");
-	    JButton bouton = new ChargerMNT("Chargez vÃ´tre MNT", label);
+	    JLabel label = new JLabel("Fichier MNT selecionné : ...");
+	    JButton bouton = new ChargerMNT("Chargez vôtre MNT", label);
 	    panel.add(label);
 	    panel.add(bouton);
 	    this.add(panel, BorderLayout.NORTH);
-	    this.setTitle("ModÃ©lisation de MNT");
+	    this.setTitle("Modélisation de MNT");
 	    this.setExtendedState(Frame.MAXIMIZED_BOTH);
 	    this.setLocationRelativeTo(null);
 	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
@@ -36,4 +36,3 @@ public class Fenetre extends JFrame {
 	  }
 	
 }
-
