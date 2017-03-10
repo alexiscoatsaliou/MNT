@@ -1,3 +1,4 @@
+
 package ProjetJava;
 
 import java.awt.Color;
@@ -20,12 +21,12 @@ public PlacerPoints() {
 	 
 		 Graphics2D g2d = (Graphics2D) g;
 		 
-		 //On crÃ©e des carrÃ©s 
+		 //On crée des carrés 
 		// System.out.println(ChargerMNT.m.ncols+" "+ ChargerMNT.m.nline);
 		 for(int i=0; i < ChargerMNT.m.nline-1; i++) {
 			 for(int j=0; j < ChargerMNT.m.ncols-1; j++) {
 
-				 //On crÃ©e les couleurs en fonction du Z
+				 //On crée les couleurs en fonction du Z
 				 
 				 Point pt1 = ChargerMNT.tab[i][j];
 				 Point pt2 = ChargerMNT.tab[i][j+1];
@@ -44,26 +45,30 @@ public PlacerPoints() {
 					for(int k = 0; k < ChargerMNT.tab.length; k++){
 						for(int l = 0; l < ChargerMNT.tab.length; l++){
 					
-							if(ChargerMNT.tab[k][l].getZ() < maxVal)
-								maxVal = ChargerMNT.tab[k][l].getZ();
-							if(ChargerMNT.tab[i][j].getZ() > minVal)
-								minVal = ChargerMNT.tab[k][l].getZ();
+							if(ChargerMNT.tab[k][l].getZ() > maxVal){
+								this.maxVal = ChargerMNT.tab[k][l].getZ();
+							}
+								
+							else if(ChargerMNT.tab[k][l].getZ() < minVal){
+								this.minVal = ChargerMNT.tab[k][l].getZ();
+							}
+								
 						}
 					}
 					
-					double dif = maxVal - minVal;
+					double dif = this.maxVal - this.minVal;
 					
-					 if (dif < 50) {
-						 if (n < minVal + 10) {
+					 if (dif < 25) {
+						 if (n < this.minVal + 5) {
 							 g2d.setColor(Color.green);
-						 } else if (n >= minVal + 10 && n < minVal + 20){
+						 } else if (n >= this.minVal + 5 && n < this.minVal + 10){
 							 g2d.setColor(Color.yellow);
-						 } else if (n >= minVal + 20 && n <minVal + 30){
+						 } else if (n >= this.minVal + 10 && n <this.minVal + 15){
 							 g2d.setColor(Color.orange);
-						 } else if (n >= minVal + 30 && n < minVal + 40){
+						 } else if (n >= this.minVal + 15 && n < this.minVal + 20){
 							 g2d.setColor(Color.red);
-						 }	else if (n >= minVal + 40){
-							 g2d.setColor(Color.red);
+						 }	else if (n >= this.minVal + 20){
+							 g2d.setColor(Color.black);
 						 }
 					 }
 					 if (dif >= 50) {
