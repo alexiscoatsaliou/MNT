@@ -1,37 +1,39 @@
-package ProjetJava;
+package ProjetJava; 
 
 import java.awt.BorderLayout;
-import java.awt.Container;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.Box;
+import java.awt.Frame;
+import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 
 
 public class Fenetre extends JFrame {
-
-	  public Fenetre(){
-	    this.setTitle("Mod�lisation de MNT");
-	    this.setSize(500, 500);
-	    this.setLocationRelativeTo(null);
-	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);             
-	    this.setVisible(true);
-	    JPanel panel = new JPanel();
-	    JButton bouton = new JButton("Chargez v�tre MNT");
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	String chemin;
+	
+	  public Fenetre(){							//Création de la fenêtre principale
+	    JPanel panel = new JPanel(); 
+	    JLabel label = new JLabel("Fichier MNT selecionné : ...");
+	    JButton bouton = new ChargerMNT("Chargez vôtre MNT", label);
+	    panel.add(label);
 	    panel.add(bouton);
-	    panel.add(bouton, BorderLayout.NORTH);
-	    
-	    ChargerMNT monListener = new ChargerMNT();
-	    bouton.addActionListener(monListener );
-	    this.add(panel);
+	    this.add(panel, BorderLayout.NORTH);
+	    this.setTitle("Modélisation de MNT");
+	    this.setExtendedState(Frame.MAXIMIZED_BOTH);
+	    this.setLocationRelativeTo(null);
+	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
+	    this.pack();
+	    this.setVisible(true);
+        JPanel panel2 = new JPanel();
+     	panel2.setLayout(new GridLayout());
 	  }
-	  
-	  public static void main(String[] args){       
-	    Fenetre fen = new Fenetre();
-	  } 
+	
 }
 
