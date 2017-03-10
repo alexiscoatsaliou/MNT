@@ -15,4 +15,9 @@ public class Point {
 		i = d;
 		j = e;
 	}
+	
+	public String toString(){
+		return "X = " + this.X + ", i = " + this.i + ", Y = " + this.Y + ", " + "j = " + this.j + ", ";
+		
+	}
 }

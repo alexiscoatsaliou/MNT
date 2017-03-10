@@ -4,24 +4,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 
-import javax.swing.JButton;
 import javax.swing.JFileChooser;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javax.swing.JTextField;
 
-public class ChargerMNT extends JButton implements ActionListener {
 
-	static String chemin;
-	private JLabel label;
+public class ChargerMNT implements ActionListener {
+
+	private JTextField _textField;
+	String chemin;
 	
-	public ChargerMNT(String msg, JLabel label) {
-		super(msg);
-		this.label = label;
-		this.addActionListener(this);
-	}
-	
-	
-	public void actionPerformed(ActionEvent e) { 		// Ouvre une fenêtre pour séléctionner le MNT
+	public void actionPerformed(ActionEvent e) { 
 	
 		 JFileChooser chooser = new JFileChooser();
 		    chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);   
@@ -30,8 +22,8 @@ public class ChargerMNT extends JButton implements ActionListener {
 		    {
 		    	 File folder = chooser.getSelectedFile();
 		         chemin = folder.getPath();
-		         this.label.setText("Fichier MNT selecionné : " + chemin);
-		    } 
+		    }
+		    
 	}
-
+	
 }

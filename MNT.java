@@ -3,14 +3,11 @@ package ProjetJava;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.text.DecimalFormat;
+import java.text.ParseException;
 import java.util.Scanner;
 
-public class MNT extends PlacerPoints {
+public class MNT {
 	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	Point tab [][];
 	int ncols;
 	int nline;
@@ -18,10 +15,13 @@ public class MNT extends PlacerPoints {
 	String textpath;
 	
 	public MNT(String textPath){
-		this.textpath = textPath;	
+		this.textpath = textPath;
+		
+		
 	}
 
-		public Point[][] LireMNT() throws Exception{
+		public MNT LireMNT() throws Exception{
+			MNT mnt = null;
 			
 			String filename = this.textpath;
 			File f = new File(filename);
@@ -67,9 +67,6 @@ public class MNT extends PlacerPoints {
 				compteur++;
 				tab = new Point [nrows][ncols];
 				
-				
-				//création d'un tableau contenant les coordonnées des points, leur altitudes et leur position dans le tableau
-				
 				if (compteur >= 8){
 					
 					for (int i = 0; i < nrows; i++) {
@@ -98,7 +95,10 @@ public class MNT extends PlacerPoints {
 			in.close();
 			}
 			
-			return tab;
+			return mnt;
 
 		}
+		
 }
+
+
