@@ -1,4 +1,3 @@
-
 package ProjetJava;
 
 import java.awt.Color;
@@ -9,8 +8,10 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public class PlacerPoints extends JPanel {
 	 
-	double maxVal = Double.MAX_VALUE;
-    double minVal = Double.MIN_VALUE;
+	
+	//On initialise le min au MAX et le max au MIN pour mieux rÃ©cupÃ©rer le min et le max du tableau
+	double maxVal = Double.MIN_VALUE;
+    double minVal = Double.MAX_VALUE;
     
 public PlacerPoints() {    
  
@@ -21,42 +22,45 @@ public PlacerPoints() {
 	 
 		 Graphics2D g2d = (Graphics2D) g;
 		 
-		 //On crée des carrés 
+		 // On teste quelles sont les valeurs min et max du tableau
+		 for(int k = 0; k < ChargerMNT.tab.length; k++){
+				for(int l = 0; l < ChargerMNT.tab.length; l++){
+			
+					if(ChargerMNT.tab[k][l].getZ() > maxVal){
+						this.maxVal = ChargerMNT.tab[k][l].getZ();
+					}
+						
+					else if(ChargerMNT.tab[k][l].getZ() < minVal){
+						this.minVal = ChargerMNT.tab[k][l].getZ();
+					}
+						
+				}
+			}
+		 
+		 //On crÃ©e des carrÃ©s 
 		// System.out.println(ChargerMNT.m.ncols+" "+ ChargerMNT.m.nline);
 		 for(int i=0; i < ChargerMNT.m.nline-1; i++) {
 			 for(int j=0; j < ChargerMNT.m.ncols-1; j++) {
 
-				 //On crée les couleurs en fonction du Z
+				 //On crÃ©e les couleurs en fonction du Z
 				 
 				 Point pt1 = ChargerMNT.tab[i][j];
-				 Point pt2 = ChargerMNT.tab[i][j+1];
-				 Point pt3 = ChargerMNT.tab[i+1][j];
+				 //Point pt2 = ChargerMNT.tab[i][j+1];
+				 //Point pt3 = ChargerMNT.tab[i+1][j];
 				 
-				 int width = (int) (pt2.X - pt1.X);
-				 int height = (int) (pt3.Y - pt1.Y);;
-				 
-				 
-				// g2d.setPaint(Color.black);
-				// g2d.drawRect(pt1.i, pt1.j, 20, 20);
+				 //inutile?
+				 //int width = (int) (pt2.X - pt1.X);
+				 //int height = (int) (pt3.Y - pt1.Y);;
+				 // g2d.setPaint(Color.black);
+				 // g2d.drawRect(pt1.i, pt1.j, 20, 20);
 				 
 				 double n = ChargerMNT.tab[i][j].getZ();
 				// System.out.println(i + " " + j + " " +n);
 				 
-					for(int k = 0; k < ChargerMNT.tab.length; k++){
-						for(int l = 0; l < ChargerMNT.tab.length; l++){
 					
-							if(ChargerMNT.tab[k][l].getZ() > maxVal){
-								this.maxVal = ChargerMNT.tab[k][l].getZ();
-							}
-								
-							else if(ChargerMNT.tab[k][l].getZ() < minVal){
-								this.minVal = ChargerMNT.tab[k][l].getZ();
-							}
-								
-						}
-					}
-					
+					//On fais la dif entre la valeur min et la valeur max pour savoir combien de couleurs on va mettre
 					double dif = this.maxVal - this.minVal;
+					
 					
 					 if (dif < 25) {
 						 if (n < this.minVal + 5) {
@@ -71,6 +75,7 @@ public PlacerPoints() {
 							 g2d.setColor(Color.black);
 						 }
 					 }
+					 
 					 if (dif >= 50) {
 						 if (n < minVal + 15) {
 							 Color Niveau0 = new Color(0,255,0);
@@ -107,13 +112,11 @@ public PlacerPoints() {
 						 
 						 
 						 
-				 g2d.fillRect(pt1.i*10, pt1.j*10, 10, 10);
+				 g2d.fillRect(pt1.j, pt1.i, 1, 1);
 	    					 
-				// g2d.fillRect(pt1.i, pt1.j, 20, 20);
 
 			 }
 		 }	 
 	 }
 
 }
-	
