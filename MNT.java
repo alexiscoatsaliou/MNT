@@ -99,4 +99,4 @@ public class MNT extends PlacerPoints {
 			}
 		return tab;
 	}
-} 
+}

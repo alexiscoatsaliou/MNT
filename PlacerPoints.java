@@ -3,15 +3,21 @@ package ProjetJava;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.text.DecimalFormat;
+import java.text.ParseException;
+
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
 public class PlacerPoints extends JPanel {
 	 
 	
-	//On initialise le min au MAX et le max au MIN pour mieux rÃ©cupÃ©rer le min et le max du tableau
+	//On initialise le min au MAX et le max au MIN pour mieux récupérer le min et le max du tableau
 	double maxVal = Double.MIN_VALUE;
     double minVal = Double.MAX_VALUE;
+    
+    int echelle = 1;
+    
     
 public PlacerPoints() {    
  
@@ -37,25 +43,18 @@ public PlacerPoints() {
 				}
 			}
 		 
-		 //On crÃ©e des carrÃ©s 
+		 //On crée des carrés 
 		// System.out.println(ChargerMNT.m.ncols+" "+ ChargerMNT.m.nline);
 		 for(int i=0; i < ChargerMNT.m.nline-1; i++) {
 			 for(int j=0; j < ChargerMNT.m.ncols-1; j++) {
 
-				 //On crÃ©e les couleurs en fonction du Z
+				 //On crée les couleurs en fonction du Z
 				 
 				 Point pt1 = ChargerMNT.tab[i][j];
-				 //Point pt2 = ChargerMNT.tab[i][j+1];
-				 //Point pt3 = ChargerMNT.tab[i+1][j];
-				 
-				 //inutile?
-				 //int width = (int) (pt2.X - pt1.X);
-				 //int height = (int) (pt3.Y - pt1.Y);;
-				 // g2d.setPaint(Color.black);
-				 // g2d.drawRect(pt1.i, pt1.j, 20, 20);
+				 Point pt2 = ChargerMNT.tab[i][j+1];
+				 Point pt3 = ChargerMNT.tab[i+1][j];
 				 
 				 double n = ChargerMNT.tab[i][j].getZ();
-				// System.out.println(i + " " + j + " " +n);
 				 
 					
 					//On fais la dif entre la valeur min et la valeur max pour savoir combien de couleurs on va mettre
@@ -109,10 +108,18 @@ public PlacerPoints() {
 					 		 g2d.setColor(Niveau9);
 					 	 }
 					 }
+				
+					 
+					 
+					 DecimalFormat format = new DecimalFormat("#.00");
+					 try {
+						echelle = format.parse(Recuperateur.Ech).intValue();
+					} catch (ParseException e) {
+						e.printStackTrace();
+					}
 						 
-						 
-						 
-				 g2d.fillRect(pt1.j, pt1.i, 1, 1);
+					 g2d.fillRect(pt1.j*echelle, pt1.i*echelle, echelle, echelle);
+					 g2d.drawLine((int)pt2.getX(), (int)pt2.getY(), (int)pt3.getX(), (int)pt3.getY());
 	    					 
 
 			 }

@@ -40,10 +40,7 @@ public class ChargerMNT extends JButton implements ActionListener {
 		        chemin = folder.getPath();
 		        this.label.setText("Fichier MNT sélectionné : " + chemin);
 		        
-		    	ChargerMNT.m = new MNT(ChargerMNT.chemin);
-		        ChargerMNT.tab = ChargerMNT.m.LireMNT();
-		        
-		        AffichageMNT affiche = new AffichageMNT(); 		//Afficher le MNT
+
 		    } 
 	}
 

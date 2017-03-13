@@ -1,20 +1,16 @@
 package ProjetJava; 
 
 import java.awt.BorderLayout;
-import java.awt.Frame;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.Dimension;
 
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 
-public class Fenetre extends JFrame implements ActionListener {
+public class Fenetre extends JFrame {
 	
 	public static Object panel2;
 	String chemin;
@@ -35,11 +31,13 @@ public class Fenetre extends JFrame implements ActionListener {
 	        
 	    JPanel panel2 = new JPanel();
 	    JLabel label3 = new JLabel("Altitude de la courbe de niveau à tracer : ");
-	    JTextField CourbeNiv = new JTextField("      "); 
+	    JTextField CourbeNiv = new JTextField("");
+	    CourbeNiv.setPreferredSize(new Dimension(30,20));
 	    panel2.add(label3);
 	    panel2.add(CourbeNiv);
         JLabel label2 = new JLabel("Echelle du MNT : ");
-        JTextField echelle = new JTextField("      ");
+        JTextField echelle = new JTextField("");
+	    echelle.setPreferredSize(new Dimension(20,20));
         panel2.add(label2);
         panel2.add(echelle);
         this.add(panel2, BorderLayout.CENTER);
@@ -54,7 +52,7 @@ public class Fenetre extends JFrame implements ActionListener {
 	    Recuperateur monListener = new Recuperateur(CourbeNiv, echelle);
 	    Recharger.addActionListener(monListener);
 	    panel3.setVisible(true);
-	    
+
 	  }
 	
 }

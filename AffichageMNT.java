@@ -19,13 +19,17 @@ public class AffichageMNT extends JFrame {
     PlacerPoints panelJava2D = new PlacerPoints();
  	panelJava2D.setPreferredSize(new Dimension(1200,1000));
  	//panel2.add(panelJava2D);
+ 	this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
  	MNT.setExtendedState(Frame.MAXIMIZED_BOTH);
  	MNT.setVisible(true);
  	MNT.setContentPane(panelJava2D);
  	//panel2.setVisible(true);
  	this.pack();
+ 	ChargerMNT.m = new MNT(ChargerMNT.chemin);
+	ChargerMNT.tab = ChargerMNT.m.LireMNT();
  	
  	
 	}
+
 
 }
