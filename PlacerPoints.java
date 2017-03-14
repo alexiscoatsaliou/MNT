@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 public class PlacerPoints extends JPanel {
 	 
 	
-	//On initialise le min au MAX et le max au MIN pour mieux rÃ©cupÃ©rer le min et le max du tableau
+	//On initialise le min au MAX et le max au MIN pour mieux récupérer le min et le max du tableau
 	double maxVal = Double.MIN_VALUE;
     double minVal = Double.MAX_VALUE;
     
@@ -43,12 +43,12 @@ public PlacerPoints() {
 				}
 			}
 		 
-		 //On crÃ©e des carrÃ©s 
+		 //On crée des carrés 
 		// System.out.println(ChargerMNT.m.ncols+" "+ ChargerMNT.m.nline);
 		 for(int i=0; i < ChargerMNT.m.nline-1; i++) {
 			 for(int j=0; j < ChargerMNT.m.ncols-1; j++) {
 
-				 //On crÃ©e les couleurs en fonction du Z
+				 //On crée les couleurs en fonction du Z
 				 
 				 Point pt1 = ChargerMNT.tab[i][j];
 				 Point pt2 = ChargerMNT.tab[i][j+1];
@@ -112,12 +112,15 @@ public PlacerPoints() {
 					 
 					 
 					 DecimalFormat format = new DecimalFormat("#.00");
-					 try {
-						echelle = format.parse(Recuperateur.Ech).intValue();
-					} catch (ParseException e) {
-						e.printStackTrace();
-					}
-						 
+					 
+					 if (Recuperateur.Ech != null) {
+						 try {
+							 echelle = format.parse(Recuperateur.Ech).intValue();
+						 } catch (ParseException e) {
+							 e.printStackTrace();
+						 }
+					 }
+					 
 					 g2d.fillRect(pt1.j*echelle, pt1.i*echelle, echelle, echelle);
 					 //g2d.drawLine((int)pt2.getX(), (int)pt2.getY(), (int)pt3.getX(), (int)pt3.getY());
 	    					 
