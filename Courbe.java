@@ -1,12 +1,13 @@
 package ProjetJava;
 
-import java.awt.Graphics;
 
 import Jama.Matrix;
 
 public class Courbe {
 	
-	public void paintComponent(Graphics g) {
+	public Courbe(){
+	
+
 		
 		 for(int i=0; i < ChargerMNT.m.nline-1; i++) {
 			 for(int j=0; j < ChargerMNT.m.ncols-1; j++) {
@@ -21,14 +22,25 @@ public class Courbe {
 				 double[][] array2 = {{pt1.getZ(), pt2.getZ(), pt3.getZ()}};
 				 Matrix B = new Matrix(array2);
 				 Matrix InvA = A.inverse();
-				 Matrix X = InvA.solve(B);
-				 System.out.println(X);
+				 Matrix X = InvA.times(B);
+				 System.out.println(X.toString());
+				 
+				 for(int )
+				 
+				 
+				 double[][] array3 = {{pt4.getX(), pt4.getY(), 1},{pt2.getX(), pt2.getY(), 1},{pt3.getX(), pt3.getY(), 1}};
+				 Matrix Abis = new Matrix(array3);
+				 double[][] array4 = {{pt4.getZ(), pt2.getZ(), pt3.getZ()}};
+				 Matrix Bbis = new Matrix(array4);
+				 Matrix InvAbis = Abis.inverse();
+				 Matrix Xbis = InvAbis.times(Bbis);
+				 System.out.println(Xbis.toString());
 				 
 				 
 				 
 			 }
 		 }
-		
-	}
-
 }
+}
+
+
