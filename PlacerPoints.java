@@ -112,8 +112,8 @@ public PlacerPoints() {
 					 
 					 
 					 DecimalFormat format = new DecimalFormat("#.00");
-					 
-					 if (Recuperateur.Ech != null) {
+						
+					 if (Recuperateur.Ech != null && !Recuperateur.Ech.equals("")) {
 						 try {
 							 echelle = format.parse(Recuperateur.Ech).intValue();
 						 } catch (ParseException e) {
@@ -128,5 +128,4 @@ public PlacerPoints() {
 			 }
 		 }	 
 	 }
-
 }
