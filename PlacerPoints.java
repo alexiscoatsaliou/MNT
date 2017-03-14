@@ -43,6 +43,15 @@ public PlacerPoints() {
 				}
 			}
 		 
+		 DecimalFormat format = new DecimalFormat("#.00");
+		 if (Recuperateur.Ech != null && Recuperateur.Ech == "") {
+			 try {
+				 echelle = format.parse(Recuperateur.Ech).intValue();
+			 } catch (ParseException e) {
+				 e.printStackTrace();
+			 }
+		 }
+		 
 		 //On crée des carrés 
 		// System.out.println(ChargerMNT.m.ncols+" "+ ChargerMNT.m.nline);
 		 for(int i=0; i < ChargerMNT.m.nline-1; i++) {
@@ -108,19 +117,7 @@ public PlacerPoints() {
 					 		 g2d.setColor(Niveau9);
 					 	 }
 					 }
-				
-					 
-					 
-					 DecimalFormat format = new DecimalFormat("#.00");
-						
-					 if (Recuperateur.Ech != null && !Recuperateur.Ech.equals("")) {
-						 try {
-							 echelle = format.parse(Recuperateur.Ech).intValue();
-						 } catch (ParseException e) {
-							 e.printStackTrace();
-						 }
-					 }
-					 
+
 					 g2d.fillRect(pt1.j*echelle, pt1.i*echelle, echelle, echelle);
 					 //g2d.drawLine((int)pt2.getX(), (int)pt2.getY(), (int)pt3.getX(), (int)pt3.getY());
 	    					 
@@ -128,4 +125,5 @@ public PlacerPoints() {
 			 }
 		 }	 
 	 }
+
 }
