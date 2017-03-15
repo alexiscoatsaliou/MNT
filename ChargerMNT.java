@@ -29,7 +29,7 @@ public class ChargerMNT extends JButton implements ActionListener {
 	}
 	
 	
-	public void actionPerformed(ActionEvent e) { 		// Ouvre une fenêtre pour séléctionner le MNT
+	public void actionPerformed(ActionEvent e) { 		// Ouvre une fenêtre pour sélectionner le MNT
 	
 		 JFileChooser chooser = new JFileChooser();
 		    chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);   
@@ -40,6 +40,8 @@ public class ChargerMNT extends JButton implements ActionListener {
 		        chemin = folder.getPath();
 		        this.label.setText("Fichier MNT sélectionné : " + chemin);
 		        
+		        ChargerMNT.m = new MNT(ChargerMNT.chemin);
+		    	ChargerMNT.tab = ChargerMNT.m.LireMNT();
 
 		    } 
 	}

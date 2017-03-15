@@ -9,7 +9,7 @@ public class Recuperateur implements ActionListener {
 	
 	JTextField CourbeNiv = null;
 	JTextField Echelle = null;
-	String CN = null;
+	static String CN = null;
 	static String Ech = null;
 	
 	public Recuperateur(JTextField courbeNiv, JTextField echelle) {
@@ -26,6 +26,7 @@ public class Recuperateur implements ActionListener {
 		//Calcule le MNT et crée le tableau de point
 		ChargerMNT.m = new MNT(ChargerMNT.chemin);
     	ChargerMNT.tab = ChargerMNT.m.LireMNT();
+    	
     	
         AffichageMNT affiche = new AffichageMNT(); 		//Afficher le MNT
 

@@ -25,8 +25,10 @@ public PlacerPoints() {
 	 
 	 @Override
 	 public void paintComponent(Graphics g) {
+		 
 	 
 		 Graphics2D g2d = (Graphics2D) g;
+		 
 		 
 		 // On teste quelles sont les valeurs min et max du tableau
 		 for(int k = 0; k < ChargerMNT.tab.length; k++){
@@ -43,14 +45,8 @@ public PlacerPoints() {
 				}
 			}
 		 
-		 DecimalFormat format = new DecimalFormat("#.00");
-		 if (Recuperateur.Ech != null && Recuperateur.Ech == "") {
-			 try {
-				 echelle = format.parse(Recuperateur.Ech).intValue();
-			 } catch (ParseException e) {
-				 e.printStackTrace();
-			 }
-		 }
+		 
+		 
 		 
 		 //On crée des carrés 
 		// System.out.println(ChargerMNT.m.ncols+" "+ ChargerMNT.m.nline);
@@ -60,8 +56,8 @@ public PlacerPoints() {
 				 //On crée les couleurs en fonction du Z
 				 
 				 Point pt1 = ChargerMNT.tab[i][j];
-				 Point pt2 = ChargerMNT.tab[i][j+1];
-				 Point pt3 = ChargerMNT.tab[i+1][j];
+				 //Point pt2 = ChargerMNT.tab[i][j+1];
+				 //Point pt3 = ChargerMNT.tab[i+1][j];
 				 
 				 double n = ChargerMNT.tab[i][j].getZ();
 				 
@@ -117,13 +113,26 @@ public PlacerPoints() {
 					 		 g2d.setColor(Niveau9);
 					 	 }
 					 }
+					 
+					 DecimalFormat format = new DecimalFormat("#.00");
+					 
+					 if (Recuperateur.Ech != null && Recuperateur.Ech != "" ) {
+						 try {
+							 this.echelle = format.parse(Recuperateur.Ech).intValue();
+						 } catch (ParseException e) {
+							 e.printStackTrace();
+						 }
+					 }
+					 
+					 g2d.fillRect(pt1.j*this.echelle, pt1.i*this.echelle, this.echelle, this.echelle);
+					 //g2d.drawLine((int)pt2.getX(), (int)pt2.getY(), (int)pt3.getX(), (int)pt3.getY());	 
 
-					 g2d.fillRect(pt1.j*echelle, pt1.i*echelle, echelle, echelle);
-					 //g2d.drawLine((int)pt2.getX(), (int)pt2.getY(), (int)pt3.getX(), (int)pt3.getY());
-	    					 
-
+					 
+					
 			 }
-		 }	 
+		 }
+		 g2d.setColor(Color.BLACK);
+		 g2d.drawLine(0,0,400,400);
 	 }
 
 }
