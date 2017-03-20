@@ -1,3 +1,4 @@
+
 package ProjetJava;
 
 import java.text.DecimalFormat;
@@ -56,13 +57,13 @@ public class Courbe2 extends PlacerPoints{
 			 if (ya > Ypt1 ) {
 				 double yb = Ypt1 + (a*xb)/b + c/b - courbeNivLoc/b;
 				 if (yb > Ypt1) {
-					 double xc = Xpt1 + (b/(2*a) + c/(2*a) - courbeNivLoc/(2*a));
-					 double yc = Ypt1 + (1 - xc);
+					 double xd = Xpt1 + (b/(2*a) + c/(2*a) - courbeNivLoc/(2*a));
+					 double yd = Ypt1 + (1 - xd);
 					 
 					 this.tab1[0] = (int) xa;
 					 this.tab1[1] = (int) ya;
-					 this.tab1[2] = (int) xc;
-					 this.tab1[3] = (int) yc;
+					 this.tab1[2] = (int) xd;
+					 this.tab1[3] = (int) yd;
 				 }
 				 else {
 					 double yc = Ypt1;
@@ -79,6 +80,7 @@ public class Courbe2 extends PlacerPoints{
 				 double xc = Xpt1 + (courbeNivLoc-c)/a;
 				 double xd = Xpt1 + ( b/(2*a) + c/(2*a) - courbeNivLoc/(2*a));
 				 double yd = Ypt1 + (1 - xd);
+				 
 				 
 				 this.tab1[0] = (int) xc;
 				 this.tab1[1] = (int) yc;
@@ -106,35 +108,39 @@ public class Courbe2 extends PlacerPoints{
 			 if(yabis < Ypt1) {
 				 double ybbis = Ypt1 + (abis*xbbis)/bbis + cbis/bbis - courbeNivLoc/bbis;
 				 if (ybbis < Ypt1) {
-					 double xc = Xpt1 + ( bbis/(2*abis) + cbis/(2*abis) - courbeNivLoc/(2*abis));
-					 double yc = Ypt1 * (1 - xc);
+					 double xcbis = Xpt1 + ( bbis/(2*abis) + cbis/(2*abis) - courbeNivLoc/(2*abis));
+					 double ycbis = Ypt1 * (1 - xcbis);
 					 
-					 this.tab2[0] = (int) xa;
-					 this.tab2[1] = (int) ya;
-					 this.tab2[2] = (int) xc;
-					 this.tab2[3] = (int) yc;
+					 
+					 this.tab2[0] = (int) xcbis;
+					 this.tab2[1] = (int) ycbis;
+					 this.tab2[2] = (int) xbbis;
+					 this.tab2[3] = (int) ybbis;
 				 }
 				 if(ybbis > Ypt1) {
-					 double yc = Ypt1;
-					 double xc = Xpt1 * (courbeNivLoc - cbis)/abis;
-					 double xd = Xpt1 + ( bbis/(2*abis) + cbis/(2*abis) - courbeNivLoc/(2*abis));
-					 double yd = Ypt1 * (1 - xd);
+					 double xcbis = Xpt1 + ( bbis/(2*abis) + cbis/(2*abis) - courbeNivLoc/(2*abis));
+					 double ycbis = Ypt1 + (1- xcbis);
+					 double ydbis = Ypt1;
+					 double xdbis = Xpt1 + (courbeNivLoc - cbis)/abis;
 					 
-					 this.tab2[0] = (int) xc;
-					 this.tab2[1] = (int) yc;
-					 this.tab2[2] = (int) xd;
-					 this.tab2[3] = (int) yd;
+					 
+					 
+					 this.tab2[0] = (int) xcbis;
+					 this.tab2[1] = (int) ycbis;
+					 this.tab2[2] = (int) xdbis;
+					 this.tab2[3] = (int) ydbis;
 				 }
 			 }
 			 else {
-				 double yc = Ypt1;
-				 double xc = Xpt1 * (courbeNivLoc - cbis)/abis;
+				 double ydbis = Ypt1;
+				 double xdbis = Xpt1 * (courbeNivLoc - cbis)/abis;
 				 double ybbis = Xpt1 + (abis*xabis)/bbis + cbis/bbis - courbeNivLoc/bbis;
+				
 				 
 				 this.tab2[0] = (int) xbbis;
 				 this.tab2[1] = (int) ybbis;
-				 this.tab2[2] = (int) xc;
-				 this.tab2[3] = (int) yc;
+				 this.tab2[2] = (int) xdbis;
+				 this.tab2[3] = (int) ydbis;
 			 }
 	}
 }	
