@@ -1,4 +1,3 @@
-
 package ProjetJava;
 
 import java.awt.Color;
@@ -7,24 +6,19 @@ import java.awt.Graphics2D;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 
-import Jama.Matrix;
+import Jama.Matrix; 
 
 public class Courbe extends PlacerPoints{
 	double courbeNivLoc;
 	DecimalFormat format = new DecimalFormat("#.##");
+	static int tabinter[];
 	
 	public Courbe(){
-		
-	}
-	
-	
-	public void paintComponent(Graphics g) {
+		tabinter = new int[4];
 		if (Recuperateur.CN != null | Recuperateur.CN != "") {
 		
 			System.out.println("Je suis dedans");
-			Graphics2D g2d = (Graphics2D) g;
 			double pas = echelle;
-			g2d.setColor(Color.BLACK);
 			
 			try {
 				 courbeNivLoc = format.parse(Recuperateur.CN).doubleValue();
@@ -69,13 +63,22 @@ public class Courbe extends PlacerPoints{
 							 double xc = j*pas + (b/(2*a) + c/(2*a) - courbeNivLoc/(2*a));
 							 double yc = i*pas + (1 - xc);
 							 
-							 g2d.drawLine((int) xa, (int) ya, (int) xc, (int) yc);
+							 //g2d.drawLine((int) xa, (int) ya, (int) xc, (int) yc);
+							 tabinter[0]= (int)xa; 
+							 tabinter[1]= (int)ya;
+							 tabinter[2]= (int)xc;
+							 tabinter[3]= (int)yc;
 						 }
 						 else {
 							 double yc = i*pas;
 							 double xc = j*pas + (courbeNivLoc-c)/a;
 							 
-							 g2d.drawLine((int) xa, (int) ya, (int) xc, (int) yc);
+							 //g2d.drawLine((int) xa, (int) ya, (int) xc, (int) yc);
+							 
+							 tabinter[0]= (int)xa; 
+							 tabinter[1]= (int)ya;
+							 tabinter[2]= (int)xc;
+							 tabinter[3]= (int)yc;
 						 }
 					 }
 					 if (ya < i * pas) {
@@ -84,7 +87,12 @@ public class Courbe extends PlacerPoints{
 						 double xd = j*pas + ( b/(2*a) + c/(2*a) - courbeNivLoc/(2*a));
 						 double yd = i*pas + (1 - xd);
 						 
-						 g2d.drawLine((int) xc, (int) yc, (int) xd, (int) yd);
+						 //g2d.drawLine((int) xc, (int) yc, (int) xd, (int) yd);
+						 
+						 tabinter[0]= (int)xc; 
+						 tabinter[1]= (int)yc;
+						 tabinter[2]= (int)xd;
+						 tabinter[3]= (int)yd;
 						 
 					 }
 					 
@@ -109,22 +117,40 @@ public class Courbe extends PlacerPoints{
 							 double xcbis = j*pas + ( bbis/(2*abis) + cbis/(2*abis) - courbeNivLoc/(2*abis));
 							 double ycbis = i*pas * (1 - xcbis);
 							 
-							 g2d.drawLine((int) xcbis, (int) ycbis, (int) xbbis, (int) ybbis);
+							 //g2d.drawLine((int) xcbis, (int) ycbis, (int) xbbis, (int) ybbis);
+							 tabinter[0]= (int)xbbis; 
+							 tabinter[1]= (int)ybbis;
+							 tabinter[2]= (int)xcbis;
+							 tabinter[3]= (int)ycbis;
 						 }
 						 if(ybbis > i*pas) {
-							 double yc = i*pas;
-							 double xc = j*pas * (courbeNivLoc - cbis)/abis;
 							 
-							 g2d.drawLine((int) xc, (int) yc, (int) xbbis, (int) ybbis);
+							 double xcbis = j*pas + ( bbis/(2*abis) + cbis/(2*abis) - courbeNivLoc/(2*abis));
+							 double ycbis = i*pas * (1 - xcbis);							 
+							 double ydbis = i*pas;
+							 double xdbis = j*pas * (courbeNivLoc - cbis)/abis;
+							 
+							 //g2d.drawLine((int) xc, (int) yc, (int) xbbis, (int) ybbis);
+							 tabinter[0]= (int)xcbis; 
+							 tabinter[1]= (int)ycbis;
+							 tabinter[2]= (int)xdbis;
+							 tabinter[3]= (int)ydbis;
+							 
 						 }
 					 }
 					 else {
-						 double yc = i*pas;
-						 double xc = j*pas * (courbeNivLoc - cbis)/abis;
-						 double xd = j*pas + ( bbis/(2*abis) + cbis/(2*abis) - courbeNivLoc/(2*abis));
-						 double yd = i*pas * (1 - xd);
+						 double ydbis = i*pas;
+						 double xdbis = j*pas * (courbeNivLoc - cbis)/abis;
+						 double ybbis = i*pas + (abis*xbbis)/bbis + cbis/bbis - courbeNivLoc/bbis;
 						 
-						 g2d.drawLine((int) xc, (int) yc, (int) xd, (int) yd);
+						 //g2d.drawLine((int) xc, (int) yc, (int) xd, (int) yd);
+						 
+						 tabinter[0]= (int)xbbis; 
+						 tabinter[1]= (int)ybbis;
+						 tabinter[2]= (int)xdbis;
+						 tabinter[3]= (int)ydbis;
+						 
+						 
 					 }
 					 
 				 }
@@ -133,6 +159,8 @@ public class Courbe extends PlacerPoints{
 			 
 
 		}
-
+		this.tabinter = tabinter;
 	}
+	
+	
 }
