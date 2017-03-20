@@ -21,7 +21,7 @@ public class Fenetre extends JFrame {
 	    JLabel label = new JLabel("Fichier MNT selecionné : ...");
 	    JButton bouton = new ChargerMNT("Chargez vôtre MNT", label);
 	    panel.add(bouton);
-	    this.setSize(700, 150);
+	    this.setSize(600, 150);
 	    this.add(panel, BorderLayout.NORTH);
 	    panel.add(label);
 	    this.setTitle("Modélisation de MNT");
@@ -47,7 +47,7 @@ public class Fenetre extends JFrame {
 	    JButton Recharger = new JButton("Lancer la modélisation");
 	    panel3.add(Recharger);
 	    this.add(panel3, BorderLayout.SOUTH);
-	    this.pack();
+//	    this.pack();
 	    
 	    Recuperateur monListener = new Recuperateur(CourbeNiv, echelle);
 	    Recharger.addActionListener(monListener);
