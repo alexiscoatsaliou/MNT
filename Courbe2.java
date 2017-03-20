@@ -32,16 +32,16 @@ public class Courbe2 extends PlacerPoints{
 			double Zmin = Double.MAX_VALUE;
 			double Zmax = Double.MIN_VALUE;
 			
-			Zmax = (Zmax < pt1.getZ()) ? pt1.getZ() : Zmax ; //Maintenant, Zmax vaut pt1.getZ()
-			Zmax = (Zmax < pt2.getZ()) ? pt2.getZ() : Zmax ;
-			Zmax = (Zmax < pt3.getZ()) ? pt3.getZ() : Zmax ;
-			Zmax = (Zmax < pt4.getZ()) ? pt4.getZ() : Zmax ;
-			
-			Zmin = (Zmin < pt1.getZ()) ? pt1.getZ() : Zmin ;
-			Zmin = (Zmin < pt2.getZ()) ? pt2.getZ() : Zmin ;
-			Zmin = (Zmin < pt3.getZ()) ? pt3.getZ() : Zmin ;
-			Zmin = (Zmin < pt4.getZ()) ? pt4.getZ() : Zmin ;
-			
+//			Zmax = (Zmax < pt1.getZ()) ? pt1.getZ() : Zmax ; //Maintenant, Zmax vaut pt1.getZ()
+//			Zmax = (Zmax < pt2.getZ()) ? pt2.getZ() : Zmax ;
+//			Zmax = (Zmax < pt3.getZ()) ? pt3.getZ() : Zmax ;
+//			Zmax = (Zmax < pt4.getZ()) ? pt4.getZ() : Zmax ;
+//			
+//			Zmin = (Zmin < pt1.getZ()) ? pt1.getZ() : Zmin ;
+//			Zmin = (Zmin < pt2.getZ()) ? pt2.getZ() : Zmin ;
+//			Zmin = (Zmin < pt3.getZ()) ? pt3.getZ() : Zmin ;
+//			Zmin = (Zmin < pt4.getZ()) ? pt4.getZ() : Zmin ;
+//			
 //			for(int l = 0; l < ChargerMNT.tab.length; l++){
 //				
 //				if(pt1.getZ() > Zmax){
@@ -73,8 +73,9 @@ public class Courbe2 extends PlacerPoints{
 			
 			
 
-						if (courbeNivLoc <= pt1.getZ() || courbeNivLoc <= pt2.getZ() || courbeNivLoc <= pt3.getZ() || courbeNivLoc <= pt4.getZ()) {
-							
+						
+			if (courbeNivLoc <= pt1.getZ() || courbeNivLoc <= pt2.getZ() || courbeNivLoc <= pt3.getZ() || courbeNivLoc <= pt4.getZ()) {	
+				if (courbeNivLoc > pt1.getZ() || courbeNivLoc > pt2.getZ() || courbeNivLoc > pt3.getZ() || courbeNivLoc > pt4.getZ()) {	
 							 double Xpt1 = pt1.getj();
 							 double Ypt1 = pt1.geti();
 							 double Xpt2 = pt2.getj();
@@ -186,8 +187,8 @@ public class Courbe2 extends PlacerPoints{
 								 this.tab2[2] = (int) xdbis;
 								 this.tab2[3] = (int) ydbis;
 					 }
+				}
 			}
 		}				
 	}	
-}	
-	
+} 
