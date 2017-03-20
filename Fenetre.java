@@ -2,7 +2,9 @@ package ProjetJava;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.Toolkit;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -19,7 +21,7 @@ public class Fenetre extends JFrame {
 	  public Fenetre(){							//Création de la fenêtre principale
 	    JPanel panel = new JPanel(); 
 	    JLabel label = new JLabel("Fichier MNT selecionné : ...");
-	    JButton bouton = new ChargerMNT("Chargez vôtre MNT", label);
+	    JButton bouton = new ChargerMNT("Chargez votre MNT", label);
 	    panel.add(bouton);
 	    this.setSize(600, 150);
 	    this.add(panel, BorderLayout.NORTH);
@@ -28,7 +30,8 @@ public class Fenetre extends JFrame {
 	    this.setLocationRelativeTo(null);
 	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
 	    this.setVisible(true);
-	        
+	    setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\workspace\\ProjetJava\\src\\ProjetJava\\MNT.jpg")); 
+	    
 	    JPanel panel2 = new JPanel();
 	    JLabel label3 = new JLabel("Altitude de la courbe de niveau à tracer : ");
 	    JTextField CourbeNiv = new JTextField("");
@@ -47,6 +50,7 @@ public class Fenetre extends JFrame {
 	    JButton Recharger = new JButton("Lancer la modélisation");
 	    panel3.add(Recharger);
 	    this.add(panel3, BorderLayout.SOUTH);
+
 //	    this.pack();
 	    
 	    Recuperateur monListener = new Recuperateur(CourbeNiv, echelle);
