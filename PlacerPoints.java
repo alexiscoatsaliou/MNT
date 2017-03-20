@@ -8,6 +8,8 @@ import java.text.ParseException;
 
 import javax.swing.JPanel;
 
+import Jama.Matrix;
+
 @SuppressWarnings("serial")
 public class PlacerPoints extends JPanel {
 	 
@@ -17,6 +19,8 @@ public class PlacerPoints extends JPanel {
     double minVal = Double.MAX_VALUE;
     
     int echelle = 1;
+    double courbeNivLoc;
+    DecimalFormat format = new DecimalFormat("#.00");
     
     
 public PlacerPoints() {    
@@ -50,23 +54,22 @@ public PlacerPoints() {
 		 
 		 //On crée des carrés 
 		// System.out.println(ChargerMNT.m.ncols+" "+ ChargerMNT.m.nline);
-		 for(int i=0; i < ChargerMNT.m.nline-1; i++) {
-			 for(int j=0; j < ChargerMNT.m.ncols-1; j++) {
-
-				 //On crée les couleurs en fonction du Z
+		 for(int i=0; i < ChargerMNT.m.nline-2; i++) {
+			 for(int j=0; j < ChargerMNT.m.ncols-2; j++) { 
 				 
 				 Point pt1 = ChargerMNT.tab[i][j];
-				 //Point pt2 = ChargerMNT.tab[i][j+1];
-				 //Point pt3 = ChargerMNT.tab[i+1][j];
+				 Point pt2 = ChargerMNT.tab[i][j+1];
+				 Point pt3 = ChargerMNT.tab[i+1][j];
+				 Point pt4 = ChargerMNT.tab[i+1][j+1];
+				 
+				//On crée les couleurs en fonction du Z
 				 
 				 double n = ChargerMNT.tab[i][j].getZ();
-				 
 					
 					//On fais la dif entre la valeur min et la valeur max pour savoir combien de couleurs on va mettre
 					double dif = this.maxVal - this.minVal;
 					
-					
-					 if (dif < 25) {
+					 if (dif < 50) {					//Si dif est inférieur à 50, on ne met que 5 couleurs pour ne pas surcharger la carte
 						 if (n < this.minVal + 5) {
 							 g2d.setColor(Color.green);
 						 } else if (n >= this.minVal + 5 && n < this.minVal + 10){
@@ -80,7 +83,7 @@ public PlacerPoints() {
 						 }
 					 }
 					 
-					 if (dif >= 50) {
+					 if (dif >= 50) {					//Si dif est supérieure à 50, on met 10 couleurs
 						 if (n < minVal + 15) {
 							 Color Niveau0 = new Color(0,255,0);
 							 g2d.setColor(Niveau0);
@@ -124,15 +127,20 @@ public PlacerPoints() {
 						 }
 					 }
 					 
-					 g2d.fillRect(pt1.j*this.echelle, pt1.i*this.echelle, this.echelle, this.echelle);
-					 //g2d.drawLine((int)pt2.getX(), (int)pt2.getY(), (int)pt3.getX(), (int)pt3.getY());	 
-
+					 Courbe2 c = new Courbe2(pt1, pt2, pt3, pt4, echelle);
 					 
+					 g2d.fillRect(pt1.j*this.echelle, pt1.i*this.echelle, this.echelle, this.echelle);
+					 
+					 g2d.setColor(Color.black);
+					 g2d.drawLine(c.tab1[0]*echelle, c.tab1[1]*echelle, c.tab1[2]*echelle, c.tab1[3]*echelle);
+					 g2d.drawLine(c.tab2[0]*echelle, c.tab2[1]*echelle, c.tab2[2]*echelle, c.tab2[3]*echelle);	 
+
+						 
+					 }
 					
 			 }
 		 }
-		 g2d.setColor(Color.BLACK);
-		 g2d.drawLine(0,0,400,400);
-	 }
+		 
+		 //Courbe c = new Courbe();
+ }
 
-}
