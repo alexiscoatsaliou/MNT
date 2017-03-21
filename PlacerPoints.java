@@ -130,10 +130,17 @@ public PlacerPoints() {
 					 		Courbe2 c = new Courbe2(pt1, pt2, pt3, pt4, echelle);
 					 
 					 		g2d.fillRect(pt1.j*this.echelle, pt1.i*this.echelle, this.echelle, this.echelle);
+					 		
+					 		if (c.tab1[1]*echelle != 0 && c.tab1[1]*echelle != 0 && c.tab1[2]*echelle != 0 && c.tab1[3]*echelle != 0 ){
+					 			if (c.tab2[1]*echelle != 0 && c.tab2[1]*echelle != 0 && c.tab2[2]*echelle != 0 && c.tab2[3]*echelle != 0 ){
+					 			
+					 				g2d.setColor(Color.black);
+							 		g2d.drawLine(c.tab1[0]*echelle, c.tab1[1]*echelle, c.tab1[2]*echelle, c.tab1[3]*echelle);
+							 		g2d.drawLine(c.tab2[0]*echelle, c.tab2[1]*echelle, c.tab2[2]*echelle, c.tab2[3]*echelle);
+					 			}
+					 		}
 					 
-					 		g2d.setColor(Color.black);
-					 		g2d.drawLine(c.tab1[0]*echelle, c.tab1[1]*echelle, c.tab1[2]*echelle, c.tab1[3]*echelle);
-					 		g2d.drawLine(c.tab2[0]*echelle, c.tab2[1]*echelle, c.tab2[2]*echelle, c.tab2[3]*echelle);	 
+					 			 
 					 	
 						 
 					 }
