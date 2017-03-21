@@ -29,49 +29,6 @@ public class Courbe2 extends PlacerPoints{
 			}
 			
 			
-			double Zmin = Double.MAX_VALUE;
-			double Zmax = Double.MIN_VALUE;
-			
-//			Zmax = (Zmax < pt1.getZ()) ? pt1.getZ() : Zmax ; //Maintenant, Zmax vaut pt1.getZ()
-//			Zmax = (Zmax < pt2.getZ()) ? pt2.getZ() : Zmax ;
-//			Zmax = (Zmax < pt3.getZ()) ? pt3.getZ() : Zmax ;
-//			Zmax = (Zmax < pt4.getZ()) ? pt4.getZ() : Zmax ;
-//			
-//			Zmin = (Zmin < pt1.getZ()) ? pt1.getZ() : Zmin ;
-//			Zmin = (Zmin < pt2.getZ()) ? pt2.getZ() : Zmin ;
-//			Zmin = (Zmin < pt3.getZ()) ? pt3.getZ() : Zmin ;
-//			Zmin = (Zmin < pt4.getZ()) ? pt4.getZ() : Zmin ;
-//			
-//			for(int l = 0; l < ChargerMNT.tab.length; l++){
-//				
-//				if(pt1.getZ() > Zmax){
-//					Zmax = pt1.getZ();
-//				}
-//				if(pt2.getZ() > Zmax){
-//					Zmax = pt2.getZ();
-//				}
-//				if(pt3.getZ() > Zmax){
-//					Zmax = pt1.getZ();
-//				}	
-//				if(pt4.getZ() > Zmax){
-//					Zmax = pt4.getZ();
-//				}
-//				
-//				if(pt1.getZ() < Zmin){
-//					Zmin = pt1.getZ();
-//				}
-//				if(pt2.getZ() < Zmin){
-//					Zmin = pt2.getZ();
-//				}
-//				if(pt3.getZ() < Zmin){
-//					Zmin = pt3.getZ();
-//				}
-//				if(pt4.getZ() < Zmin){
-//					Zmin = pt4.getZ();
-//				}
-//			}
-			
-			
 
 						
 			if (courbeNivLoc <= pt1.getZ() || courbeNivLoc <= pt2.getZ() || courbeNivLoc <= pt3.getZ() || courbeNivLoc <= pt4.getZ()) {	
@@ -85,7 +42,7 @@ public class Courbe2 extends PlacerPoints{
 							 double Xpt4 = pt4.getj();
 							 double Ypt4 = pt4.geti();
 							 
-							//On crée un triangle que l'
+							//On crée un triangle que l'	
 							 double[][] array1 = {{Xpt1, Ypt1, 1},{Xpt2, Ypt2, 1},{Xpt3, Ypt3, 1}};
 							 Matrix A = new Matrix(array1);
 							 double[][] array2 = {{pt1.getZ()},{ pt2.getZ()}, {pt3.getZ()}};
@@ -95,15 +52,16 @@ public class Courbe2 extends PlacerPoints{
 							 double a = X.get(0, 0);
 							 double b = X.get(1, 0);
 							 double c = X.get(2, 0);
-							 double xa = Xpt1 ;
+							 double xa = Xpt3 ;
 							 double xb = Xpt2; 
+
 							 
-							 double ya = Ypt1 + (a*Xpt1)/b + c/b - courbeNivLoc/b;
-							 if (ya >= Ypt1 ) {
+							 double ya = Ypt3 + (a*xa)/b + c/b - courbeNivLoc/b;
+							 if (ya >= Ypt3 ) {
 								 double yb = Ypt1 + (a*xb)/b + c/b - courbeNivLoc/b;
-								 if (yb >= Ypt1) {
-									 double xd = Xpt1 + (b/(2*a) + c/(2*a) - courbeNivLoc/(2*a));
-									 double yd = Ypt1 + (1 - xd);
+								 if (yb >= Ypt3) {
+									 double xd = Xpt3 + (b/(a+b) + c/(a+b) - courbeNivLoc/(a+b));
+									 double yd = Ypt3 + (1 - xd);
 									 
 									 this.tab1[0] = (int) xa;
 									 this.tab1[1] = (int) ya;
@@ -111,8 +69,8 @@ public class Courbe2 extends PlacerPoints{
 									 this.tab1[3] = (int) yd;
 								 }
 								 else {
-									 double yc = Ypt1;
-									 double xc = Xpt1 + (courbeNivLoc-c)/a;
+									 double yc = Ypt3;
+									 double xc = Xpt3 + (courbeNivLoc-c)/a;
 									 
 									 this.tab1[0] = (int) xa;
 									 this.tab1[1] = (int) ya;
@@ -120,11 +78,11 @@ public class Courbe2 extends PlacerPoints{
 									 this.tab1[3] = (int) yc;
 								 }
 							 }
-							 if (ya <= Ypt1) {
-								 double yc = Ypt1;
-								 double xc = Xpt1 + (courbeNivLoc-c)/a;
-								 double xd = Xpt1 + ( b/(2*a) + c/(2*a) - courbeNivLoc/(2*a));
-								 double yd = Ypt1 + (1 - xd);
+							 if (ya < Ypt3) {
+								 double yc = Ypt3;
+								 double xc = Xpt3 + (courbeNivLoc-c)/a;
+								 double xd = Xpt3 + ( b/(a+b) + c/(a+b) - courbeNivLoc/(a+b));
+								 double yd = Ypt3 + (1 - xd);
 								 
 								 
 								 this.tab1[0] = (int) xc;
@@ -153,7 +111,7 @@ public class Courbe2 extends PlacerPoints{
 							 if(yabis <= Ypt1) {
 								 double ybbis = Ypt1 + (abis*xbbis)/bbis + cbis/bbis - courbeNivLoc/bbis;
 								 if (ybbis <= Ypt1) {
-									 double xcbis = Xpt1 + ( bbis/(2*abis) + cbis/(2*abis) - courbeNivLoc/(2*abis));
+									 double xcbis = Xpt1 + ( bbis/(abis + bbis) + cbis/(abis + bbis) - courbeNivLoc/(abis + bbis));
 									 double ycbis = Ypt1 * (1 - xcbis);
 									 
 									 
@@ -163,7 +121,7 @@ public class Courbe2 extends PlacerPoints{
 									 this.tab2[3] = (int) ybbis;
 								 }
 								 if(ybbis >= Ypt1) {
-									 double xcbis = Xpt1 + ( bbis/(2*abis) + cbis/(2*abis) - courbeNivLoc/(2*abis));
+									 double xcbis = Xpt1 + ( bbis/(abis + bbis) + cbis/(abis + bbis) - courbeNivLoc/(abis + bbis));
 									 double ycbis = Ypt1 + (1- xcbis);
 									 double ydbis = Ypt1;
 									 double xdbis = Xpt1 + (courbeNivLoc - cbis)/abis;
