@@ -111,20 +111,20 @@ public class Courbe2 extends PlacerPoints{
 							 if(yabis <= Ypt1) {
 								 double ybbis = Ypt1 + (abis*xbbis)/bbis + cbis/bbis - courbeNivLoc/bbis;
 								 if (ybbis <= Ypt1) {
-									 double xcbis = Xpt1 + ( bbis/(abis + bbis) + cbis/(abis + bbis) - courbeNivLoc/(abis + bbis));
-									 double ycbis = Ypt1 * (1 - xcbis);
+									 double xdbis = Xpt1 + ( bbis/(abis + bbis) + cbis/(abis + bbis) - courbeNivLoc/(abis + bbis));
+									 double ydbis = Ypt1 * (1 - xdbis);
 									 
 									 
-									 this.tab2[0] = (int) xcbis;
-									 this.tab2[1] = (int) ycbis;
+									 this.tab2[0] = (int) xdbis;
+									 this.tab2[1] = (int) ydbis;
 									 this.tab2[2] = (int) xbbis;
 									 this.tab2[3] = (int) ybbis;
 								 }
 								 if(ybbis >= Ypt1) {
-									 double xcbis = Xpt1 + ( bbis/(abis + bbis) + cbis/(abis + bbis) - courbeNivLoc/(abis + bbis));
-									 double ycbis = Ypt1 + (1- xcbis);
-									 double ydbis = Ypt1;
-									 double xdbis = Xpt1 + (courbeNivLoc - cbis)/abis;
+									 double xdbis = Xpt1 + ( bbis/(abis + bbis) + cbis/(abis + bbis) - courbeNivLoc/(abis + bbis));
+									 double ydbis = Ypt1 + (1- xdbis);
+									 double ycbis = Ypt1;
+									 double xcbis = Xpt1 + (courbeNivLoc - cbis)/abis;
 									 
 									 
 									 
@@ -135,15 +135,15 @@ public class Courbe2 extends PlacerPoints{
 								 }
 							 }
 							 else {
-								 double ydbis = Ypt1;
-								 double xdbis = Xpt1 * (courbeNivLoc - cbis)/abis;
-								 double ybbis = Xpt1 + (abis*xabis)/bbis + cbis/bbis - courbeNivLoc/bbis;
+								 double ycbis = Ypt1;
+								 double xcbis = Xpt1 * (courbeNivLoc - cbis)/abis;
+								 double ybbis = Ypt1 + (abis*xabis)/bbis + cbis/bbis - courbeNivLoc/bbis;
 								
 								 
 								 this.tab2[0] = (int) xbbis;
 								 this.tab2[1] = (int) ybbis;
-								 this.tab2[2] = (int) xdbis;
-								 this.tab2[3] = (int) ydbis;
+								 this.tab2[2] = (int) xcbis;
+								 this.tab2[3] = (int) ycbis;
 					 }
 				}
 			}
