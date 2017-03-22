@@ -54,14 +54,18 @@ public PlacerPoints() {
 		 
 		 //On crée des carrés 
 		// System.out.println(ChargerMNT.m.ncols+" "+ ChargerMNT.m.nline);
-		 for(int i=0; i < ChargerMNT.m.nline-2; i++) {
-			 for(int j=0; j < ChargerMNT.m.ncols-2; j++) { 
+		 for(int i=0; i <= ChargerMNT.m.nline-2; i++) {
+			 for(int j=0; j <= ChargerMNT.m.ncols-2; j++) { 
 				 
 				 Point pt1 = ChargerMNT.tab[i][j];
 				 Point pt2 = ChargerMNT.tab[i][j+1];
 				 Point pt3 = ChargerMNT.tab[i+1][j];
 				 Point pt4 = ChargerMNT.tab[i+1][j+1];
 				 
+				 System.out.println(pt1);
+				 System.out.println(pt2);
+				 System.out.println(pt3);
+				 System.out.println(pt4);
 				//On crée les couleurs en fonction du Z
 				 
 				 double n = ChargerMNT.tab[i][j].getZ();
@@ -127,19 +131,30 @@ public PlacerPoints() {
 						 }
 					 }
 					 	
-					 		Courbe2 c = new Courbe2(pt1, pt2, pt3, pt4, echelle);
-					 
-					 		g2d.fillRect(pt1.j*this.echelle, pt1.i*this.echelle, this.echelle, this.echelle);
-					 		
-					 		if (c.tab1[1]*echelle != 0 && c.tab1[1]*echelle != 0 && c.tab1[2]*echelle != 0 && c.tab1[3]*echelle != 0 ){
-					 			if (c.tab2[1]*echelle != 0 && c.tab2[1]*echelle != 0 && c.tab2[2]*echelle != 0 && c.tab2[3]*echelle != 0 ){
-					 			
-					 				g2d.setColor(Color.black);
-							 		g2d.drawLine(c.tab1[0]*echelle, c.tab1[1]*echelle, c.tab1[2]*echelle, c.tab1[3]*echelle);
-							 		g2d.drawLine(c.tab2[0]*echelle, c.tab2[1]*echelle, c.tab2[2]*echelle, c.tab2[3]*echelle);
-					 			}
-					 		}
-					 
+			 		Courbe2 c = new Courbe2(pt1, pt2, pt3, pt4, echelle);
+			 
+			 		g2d.fillRect(pt1.j*this.echelle, pt1.i*this.echelle, this.echelle, this.echelle);
+			 		
+			 		
+		 		
+
+					if (c.tab1[0]*echelle != 0 || c.tab1[1]*echelle != 0 || c.tab1[2]*echelle != 0 || c.tab1[3]*echelle != 0 ){
+				 		System.out.println(c.tab1[0]*echelle);
+				 		System.out.println(c.tab1[1]*echelle);
+				 		System.out.println(c.tab1[2]*echelle);
+				 		System.out.println(c.tab1[3]*echelle);
+						g2d.setColor(Color.black);
+				 		g2d.drawLine((int)c.tab1[0]*echelle, (int)c.tab1[1]*echelle, (int)c.tab1[2]*echelle, (int)c.tab1[3]*echelle);
+					}
+					
+					if (c.tab2[0]*echelle != 0 || c.tab2[1]*echelle != 0 || c.tab2[2]*echelle != 0 || c.tab2[3]*echelle != 0 ){
+				 		System.out.println(c.tab2[0]*echelle);
+				 		System.out.println(c.tab2[1]*echelle);
+				 		System.out.println(c.tab2[2]*echelle);
+				 		System.out.println(c.tab2[3]*echelle);
+						g2d.setColor(Color.black);
+						g2d.drawLine((int)c.tab2[0]*echelle, (int)c.tab2[1]*echelle, (int)c.tab2[2]*echelle, (int)c.tab2[3]*echelle);
+					}
 					 			 
 					 	
 						 
@@ -149,4 +164,4 @@ public PlacerPoints() {
 		 }
 		 
 		 //Courbe c = new Courbe();
- }
+}
