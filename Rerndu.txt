@@ -3,7 +3,9 @@
 
 -Rapport ( 2-5 pages) a rendre pour vendredi 24 mars
 	-Organisation du travail
+		Gantt + ce que chacun a fait(?)
 	-Comparaison Planning prévisionnel/réalisation
+	
 	-Bilan :-ce qui a marché 
 				Le MNT
 			-ce qui n'a pas marché
