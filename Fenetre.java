@@ -107,4 +107,5 @@ public class Fenetre extends JFrame implements ActionListener {
 			    } 
 		}
 
-}
+}	
+

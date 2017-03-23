@@ -2,6 +2,7 @@ package ProjetJava;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.JTextField;
 
@@ -28,7 +29,12 @@ public class Recuperateur implements ActionListener {
     	ChargerMNT.tab = ChargerMNT.m.LireMNT();
     	
     	
-        AffichageMNT affiche = new AffichageMNT(); 		//Afficher le MNT
+        try {
+			AffichageMNT affiche = new AffichageMNT();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} 		//Afficher le MNT
 
 	}
 

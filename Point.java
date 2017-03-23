@@ -14,24 +14,26 @@ public class Point {
 		Z = c;
 		i = d;
 		j = e;
+		
+		
 	}
 	
-	public String toString(){
-		return "" + Z + ", ";
-	}
-	
-	public double getX(){
+	public  double getX(){
 		return this.X;
 	}
-	
-	public double getY(){
+	public  double getY(){
 		return this.Y;
 	}
-	
-	public double getZ(){
+	public  double getZ(){
 		return this.Z;
 	}
-	
-	
-	
+	public double getj(){
+		return this.j;
+	}
+	public double geti(){
+		return this.i;
+	}
+	public String toString() {
+		return this.X + " - " + this.Y + " - " + this.Z;
+	}
 }

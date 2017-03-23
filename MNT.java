@@ -69,7 +69,7 @@ public class MNT extends PlacerPoints {
 				
 
 
-				//crÃ©ation d'un tableau contenant les coordonnÃ©es des points, leur altitudes et leur position dans le tableau
+				//création d'un tableau contenant les coordonnées des points, leur altitudes et leur position dans le tableau
 
 				if (compteur >= 6){
 					
@@ -99,4 +99,6 @@ public class MNT extends PlacerPoints {
 			}
 		return tab;
 	}
-}	
+} 
+
+

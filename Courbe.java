@@ -60,14 +60,14 @@ public class Courbe extends PlacerPoints{
 					 if (ya > i * pas ) {
 						 double yb = i*pas + (a*xb)/b + c/b - courbeNivLoc/b;
 						 if (yb > i * pas) {
-							 double xc = j*pas + (b/(2*a) + c/(2*a) - courbeNivLoc/(2*a));
-							 double yc = i*pas + (1 - xc);
+							 double xd = j*pas + (b/(2*a) + c/(2*a) - courbeNivLoc/(2*a));
+							 double yd = i*pas + (1 - xd);
 							 
 							 //g2d.drawLine((int) xa, (int) ya, (int) xc, (int) yc);
 							 tabinter[0]= (int)xa; 
 							 tabinter[1]= (int)ya;
-							 tabinter[2]= (int)xc;
-							 tabinter[3]= (int)yc;
+							 tabinter[2]= (int)xd;
+							 tabinter[3]= (int)yd;
 						 }
 						 else {
 							 double yc = i*pas;
@@ -160,6 +160,10 @@ public class Courbe extends PlacerPoints{
 
 		}
 		this.tabinter = tabinter;
+		System.out.println(tabinter[0]);
+		System.out.println(tabinter[1]);
+		System.out.println(tabinter[2]);
+		System.out.println(tabinter[3]);
 	}
 	
 	
