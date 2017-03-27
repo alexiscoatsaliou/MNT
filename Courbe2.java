@@ -68,10 +68,10 @@ public class Courbe2 extends PlacerPoints{
 						//System.out.println("yb: "+yb);
 						System.out.println("ypt4:"+Ypt4+"   ypt3: "+Ypt3);
 						
-						this.tab2[0] = xa;
-						this.tab2[1] = ya;
-						this.tab2[2] = xb;
-						this.tab2[3] = yb;
+						this.tab1[0] = xa;
+						this.tab1[1] = ya;
+						this.tab1[2] = xb;
+						this.tab1[3] = yb;
 						
 						System.out.println("xa: "+xa);
 						System.out.println("ya: "+ya);
@@ -82,13 +82,15 @@ public class Courbe2 extends PlacerPoints{
 					 }
 					 else {
 						 // B en dehors de [pt3, pt4]
-						 xc = (h0 - b * (Xpt3 + Ypt3) - c) / (a - b);
+						 xc = (h0 - b * (Xpt1 + Ypt1) - c) / (a - b);
 						 yc =  Xpt1 + Ypt1 - xc;
 						 
-					    this.tab2[0] = xa;
-						this.tab2[1] = ya;
-						this.tab2[2] = xc;
-						this.tab2[3] = yc;
+						this.tab1[0] = xa;
+						this.tab1[1] = ya;
+						this.tab1[2] = xc;
+						this.tab1[3] = yc;
+						
+						
 						System.out.println("xa: "+xa);
 						System.out.println("ya: "+ya);
 						System.out.println("xc: "+xc);
@@ -99,13 +101,14 @@ public class Courbe2 extends PlacerPoints{
 					// A en dehors de [pt1, pt3]
 					xb = h0/a - b*Ypt3/a - c/a;
 					yb = Ypt3;
-					xc = (h0 - b * (Xpt3 + Ypt3) - c) / (a - b);
+					xc = (h0 - b * (Xpt1 + Ypt1) - c) / (a - b);
 					yc =  Xpt1 + Ypt1 - xc;
 					
-					this.tab2[0] = xb;
-					this.tab2[1] = yb;
-					this.tab2[2] = xc;
-					this.tab2[3] = yc;
+					this.tab1[0] = xb;
+					this.tab1[1] = yb;
+					this.tab1[2] = xc;
+					this.tab1[3] = yc;
+					
 					System.out.println("xb: "+xb);
 					System.out.println("yb: "+yb);
 					System.out.println("xc: "+xc);
@@ -162,13 +165,14 @@ public class Courbe2 extends PlacerPoints{
 					}
 					else {
 						// B en dehors de [pt1, pt2]
-						xc = (h0 - b * (Xpt2 + Ypt2) - c) / (a - b);
-						yc =  Xpt1 + Ypt1 - xc;
+						xc = (h0 - b * (Xpt1 + Ypt1) - c) / (a - b);
+						yc =  Xpt1 + Ypt1 - xc;					
 						
-						this.tab2[0] = xa;
+					    this.tab2[0] = xa;
 						this.tab2[1] = ya;
 						this.tab2[2] = xc;
-						this.tab2[3] = yc; 
+						this.tab2[3] = yc;
+						
 						System.out.println("xa: "+xa);
 						System.out.println("ya: "+ya);
 						System.out.println("xc: "+xc);
@@ -179,17 +183,19 @@ public class Courbe2 extends PlacerPoints{
 					// A en dehors de [pt2, pt4]
 					xb = h0/a - b*Ypt2/a - c/a;
 					yb = Ypt2;
-					xc = (h0 - b * (Xpt2 + Ypt2) - c) / (a - b);
+					xc = (h0 - b * (Xpt1 + Ypt1) - c) / (a - b);
 					yc =  Xpt1 + Ypt1 - xc;
 					System.out.println("xb: "+xb);
 					System.out.println("yb: "+yb);
 					System.out.println("xc: "+xc);
 					System.out.println("yc: "+yc);
 					
+					
 					this.tab2[0] = xb;
 					this.tab2[1] = yb;
 					this.tab2[2] = xc;
 					this.tab2[3] = yc;
+					
 					
 				}
 			} 

@@ -21,7 +21,8 @@ public class MNT extends PlacerPoints {
 	public MNT(String textPath){
 		this.textpath = textPath;	
 	}
-
+	
+	// Récupère les informations des 5 premières lignes du fichier texte
 	public Point[][] LireMNT(){
 
 		String filename = this.textpath;

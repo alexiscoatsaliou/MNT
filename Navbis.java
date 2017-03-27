@@ -27,7 +27,6 @@ class IHMImages extends JPanel implements MouseListener, MouseWheelListener {
 		catch(IOException exc) {
 			exc.printStackTrace();
 		}
-		setPreferredSize(new Dimension(1080, 1024));
 		setBackground(Color.WHITE);
 		this.addMouseListener(this);
 		this.addMouseWheelListener(this);

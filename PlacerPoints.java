@@ -147,18 +147,20 @@ public PlacerPoints() {
 			 		
 			 		
 		 		
-
+					// Condition pour exclure les résultats égale à 0
 					if (c.tab1[0]*echelle != 0 || c.tab1[1]*echelle != 0 || c.tab1[2]*echelle != 0 || c.tab1[3]*echelle != 0 ){
-						if ( c.tab1[0]*echelle >= Xpt1 || c.tab1[0]*echelle <= Xpt2 || c.tab1[2]*echelle >= Xpt1 || c.tab1[2]*echelle <= Xpt2){
-							if(c.tab1[1]*echelle >= Ypt1 || c.tab1[1]*echelle <= Ypt3 || c.tab1[3]*echelle >= Ypt1 || c.tab1[3]*echelle <= Ypt3){
+						// Si un point n'est pas compris dans le triangle il n'est pas affiché
+						if ( (c.tab1[0] >= Xpt1 && c.tab1[0] <= Xpt2 && c.tab1[2] >= Xpt1 && c.tab1[2] <= Xpt2) 
+							&& (c.tab1[1] >= Ypt1 && c.tab1[1] <= Ypt3 && c.tab1[3] >= Ypt1 && c.tab1[3] <= Ypt3)){
+							
 								
-								System.out.println(c.tab1[0]*echelle);
+//								System.out.println(c.tab1[0]*echelle);
 //						 		System.out.println(c.tab1[1]*echelle);
 //						 		System.out.println(c.tab1[2]*echelle);
 //						 		System.out.println(c.tab1[3]*echelle);
 								g2d.setColor(Color.black);
 						 		g2d.drawLine((int)c.tab1[0]*echelle, (int)c.tab1[1]*echelle, (int)c.tab1[2]*echelle, (int)c.tab1[3]*echelle);
-							}
+							
 							
 //						
 						}
@@ -166,17 +168,18 @@ public PlacerPoints() {
 					}
 					
 					if (c.tab2[0]*echelle != 0 || c.tab2[1]*echelle != 0 || c.tab2[2]*echelle != 0 || c.tab2[3]*echelle != 0 ){
-						if ( c.tab2[0]*echelle >= Xpt1 || c.tab2[0]*echelle <= Xpt2 || c.tab2[2]*echelle >= Xpt1 || c.tab2[2]*echelle <= Xpt2){
-							if(c.tab2[1]*echelle >= Ypt1 || c.tab2[1]*echelle <= Ypt3 || c.tab2[3]*echelle >= Ypt1 || c.tab2[3]*echelle <= Ypt3){
+						if ( (c.tab2[0] >= Xpt1 && c.tab2[0] <= Xpt2 && c.tab2[2] >= Xpt1 && c.tab2[2] <= Xpt2) 
+							&& (c.tab2[1] >= Ypt1 && c.tab2[1] <= Ypt3 && c.tab2[3] >= Ypt1 && c.tab2[3] <= Ypt3)){
 							
-								System.out.println(c.tab2[0]*echelle);
+							
+//								System.out.println(c.tab2[0]*echelle);
 //						 		System.out.println(c.tab2[1]*echelle);
 //						 		System.out.println(c.tab2[2]*echelle);
 //						 		System.out.println(c.tab2[3]*echelle);
 								
 								g2d.setColor(Color.black);
 								g2d.drawLine((int)c.tab2[0]*echelle, (int)c.tab2[1]*echelle, (int)c.tab2[2]*echelle, (int)c.tab2[3]*echelle);
-							}
+							
 							}
 //					 		
 					}

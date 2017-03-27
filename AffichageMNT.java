@@ -21,10 +21,7 @@ public class AffichageMNT extends JFrame {
 
 	public AffichageMNT() throws IOException  {
 	
-
-	
-	PlacerPoints panelJava2D = new PlacerPoints(); 
-//	this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
+	PlacerPoints panelJava2D = new PlacerPoints();  
 	this.setSize(new Dimension (1280,1024));
 	this.add(panelJava2D);
 
@@ -38,7 +35,7 @@ public class AffichageMNT extends JFrame {
 	// Apelle de la classe Navbis
 	JFrame Navbis = new JFrame();
 	Navbis.setContentPane(new IHMImages());
-	Navbis.setSize(1280,1024);
+	Navbis.setExtendedState(this.MAXIMIZED_BOTH);
 	Navbis.setTitle("Modélisation de MNT");
 	Navbis.setVisible(true);
 	}
