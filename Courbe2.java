@@ -21,7 +21,6 @@ public class Courbe2 extends PlacerPoints{
 		tab2 = new double [4];
 		
 		if (Recuperateur.CN != null && Recuperateur.CN != ""){
-			System.out.println("Je suis dedans " + pt1.geti() + "-" + pt1.getj());
 			try {
 				 h0 = format.parse(Recuperateur.CN).doubleValue();
 			} catch (ParseException e) {
@@ -38,7 +37,7 @@ public class Courbe2 extends PlacerPoints{
 				 double Xpt4 = pt4.getj();
 				 double Ypt4 = pt4.geti();
 				 
-				//On crée un triangle que l'	
+				//On fait le calcul pour le premier triangle	
 				 double[][] array1 = {{Xpt1, Ypt1, 1},{Xpt3, Ypt3, 1},{Xpt4, Ypt4, 1}};
 				 Matrix A = new Matrix(array1);
 				 double[][] array2 = {{pt1.getZ()},{ pt3.getZ()}, {pt4.getZ()}};
@@ -49,35 +48,22 @@ public class Courbe2 extends PlacerPoints{
 				 a = X.get(0, 0);
 				 b = X.get(1, 0);
 				 c = X.get(2, 0);
-				 System.out.println("1: "+a+"; "+b+"; "+c);
 				 double xa, ya; // coordonnées de l'intersections de la droite avec (pt1, pt3)
 				 double xb, yb; // coordonnées de l'intersections de la droite avec (pt3, pt4)
 				 double xc, yc; // coordonnées de l'intersections de la droite avec (pt1, pt4)
 				 ya = h0/b - a*Xpt3/b - c/b;
-				//System.out.println("ya: "+ya);
-				System.out.println("ypt3:"+Ypt3+"   ypt1: "+Ypt1);
 				 if (ya <= Ypt3 && ya >= Ypt1) {
 					 // A entre pt3 et pt1
 					 xa = Xpt3;
 					 xb = h0/a - b*Ypt3/a - c/a;
-					//System.out.println("xb: "+xb);
-					System.out.println("xpt3:"+Xpt3+"   xpt4: "+Xpt4);
 					 if (xb >= Xpt3 && xb <= Xpt4) {
 						 // B entre pt3 et pt4
 						 yb = Ypt3;
-						//System.out.println("yb: "+yb);
-						System.out.println("ypt4:"+Ypt4+"   ypt3: "+Ypt3);
 						
 						this.tab1[0] = xa;
 						this.tab1[1] = ya;
 						this.tab1[2] = xb;
-						this.tab1[3] = yb;
-						
-						System.out.println("xa: "+xa);
-						System.out.println("ya: "+ya);
-						System.out.println("xb: "+xb);
-						System.out.println("yb: "+yb);
-						 
+						this.tab1[3] = yb;	 
 					
 					 }
 					 else {
@@ -90,11 +76,6 @@ public class Courbe2 extends PlacerPoints{
 						this.tab1[2] = xc;
 						this.tab1[3] = yc;
 						
-						
-						System.out.println("xa: "+xa);
-						System.out.println("ya: "+ya);
-						System.out.println("xc: "+xc);
-						System.out.println("yc: "+yc);
 					 }
 				 }
 				 else {
@@ -109,11 +90,6 @@ public class Courbe2 extends PlacerPoints{
 					this.tab1[2] = xc;
 					this.tab1[3] = yc;
 					
-					System.out.println("xb: "+xb);
-					System.out.println("yb: "+yb);
-					System.out.println("xc: "+xc);
-					System.out.println("yc: "+yc);
-					
 				 }
 			}
 			
@@ -126,7 +102,7 @@ public class Courbe2 extends PlacerPoints{
 				double Xpt4 = pt4.getj();
 				double Ypt4 = pt4.geti();
 				
-				//faire la même chose pour l'autre triangle
+				//On fait le calcul pour le 2e triangle
 				double[][] array3 = {{Xpt4, Ypt4, 1},{Xpt2, Ypt2, 1},{Xpt1, Ypt1, 1}};
 				Matrix A = new Matrix(array3);
 				double[][] array4 = {{pt4.getZ()}, {pt2.getZ()}, {pt1.getZ()}};
@@ -137,18 +113,15 @@ public class Courbe2 extends PlacerPoints{
 				a = X.get(0, 0);
 				b = X.get(1, 0);
 				c = X.get(2, 0);
-				System.out.println("2: "+a+"; "+b+"; "+c);
 				double xa, ya; // coordonnées de l'intersections de la droite avec (pt2, pt4)
 				double xb, yb; // coordonnées de l'intersections de la droite avec (pt1, pt2)
 				double xc, yc; // coordonnées de l'intersections de la droite avec (pt1, pt4)
 				 
 				ya = h0/b - a*Xpt2/b - c/b;
-				System.out.println("ypt4:"+Ypt4+"   ypt2: "+Ypt2);
 				if (ya <= Ypt4 && ya >= Ypt2) {
 					//A est entre pt2 et pt4
 					xa = Xpt2;
 					xb = h0/a - b*Ypt2/a - c/a;
-					System.out.println("ypt1:"+Ypt1+"   ypt2: "+Ypt2);
 					if (xb >= Xpt1 && xb <= Xpt2) {
 						// B entre pt1 et pt2
 						yb = Ypt2;
@@ -157,11 +130,6 @@ public class Courbe2 extends PlacerPoints{
 						this.tab2[1] = ya;
 						this.tab2[2] = xb;
 						this.tab2[3] = yb;
-						
-						System.out.println("xa: "+xa);
-						System.out.println("ya: "+ya);
-						System.out.println("xb: "+xb);
-						System.out.println("yb: "+yb);
 					}
 					else {
 						// B en dehors de [pt1, pt2]
@@ -172,11 +140,6 @@ public class Courbe2 extends PlacerPoints{
 						this.tab2[1] = ya;
 						this.tab2[2] = xc;
 						this.tab2[3] = yc;
-						
-						System.out.println("xa: "+xa);
-						System.out.println("ya: "+ya);
-						System.out.println("xc: "+xc);
-						System.out.println("yc: "+yc);
 				}
 				}
 				else {
@@ -184,12 +147,7 @@ public class Courbe2 extends PlacerPoints{
 					xb = h0/a - b*Ypt2/a - c/a;
 					yb = Ypt2;
 					xc = (h0 - b * (Xpt1 + Ypt1) - c) / (a - b);
-					yc =  Xpt1 + Ypt1 - xc;
-					System.out.println("xb: "+xb);
-					System.out.println("yb: "+yb);
-					System.out.println("xc: "+xc);
-					System.out.println("yc: "+yc);
-					
+					yc =  Xpt1 + Ypt1 - xc;					
 					
 					this.tab2[0] = xb;
 					this.tab2[1] = yb;
